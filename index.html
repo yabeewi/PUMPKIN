@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120c1c">
+  <title>Halloween Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="page-shell narrow">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">🎃</span>
+        <span>Pumpkin Hunt</span>
+      </div>
+      <a class="small-link" href="./collection.html">我的南瓜籃 →</a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Halloween Treasure Hunt</p>
+      <h1>萬聖節尋寶遊戲</h1>
+      <p class="lead">回答關主老師的題目、取得位置提示，找到藏起來的 QR Code，把 10 顆各有顏色、配飾與個性的神秘南瓜全部蒐集起來。</p>
+    </section>
+
+    <section class="card progress-card">
+      <div class="progress-head">
+        <div>
+          <p class="eyebrow">Collection Progress</p>
+          <div class="progress-big"><span data-progress-count>0</span> <small>/ <span data-progress-total>10</span></small></div>
+        </div>
+        <span>🎃</span>
+      </div>
+      <div class="progress-track" aria-label="蒐集進度">
+        <div class="progress-fill" data-progress-bar></div>
+      </div>
+      <div class="mini-grid" data-mini-grid></div>
+    </section>
+
+    <section class="card offline-card">
+      <p class="eyebrow">Offline Ready</p>
+      <h2 class="section-title" data-offline-status>準備離線資料中…</h2>
+      <p class="helper" data-offline-detail>第一次開啟請保持網路連線，直到顯示「離線模式準備完成」。</p>
+      <div class="action-row">
+        <button class="button-secondary" type="button" data-offline-check>重新檢查離線資料</button>
+      </div>
+    </section>
+
+    <section class="card team-card">
+      <h2 class="section-title">隊伍名稱</h2>
+      <div class="input-row">
+        <input id="teamName" type="text" maxlength="24" placeholder="例如：幽靈隊" autocomplete="off">
+        <button id="saveTeam" class="button-primary" type="button">儲存</button>
+      </div>
+      <div class="team-label" data-team-label>尚未設定隊伍名稱</div>
+      <p class="helper">名稱與蒐集進度只會記錄在目前這台 iPad 的 Safari。</p>
+    </section>
+
+    <section class="card instructions-card">
+      <h2 class="section-title">怎麼玩？</h2>
+      <ol class="instructions">
+        <li><span class="step-number">1</span><span>找到關主老師並回答題目。</span></li>
+        <li><span class="step-number">2</span><span>答對後取得「南瓜位置提示」。</span></li>
+        <li><span class="step-number">3</span><span>找到 QR Code，用 iPad 相機掃描。</span></li>
+        <li><span class="step-number">4</span><span>每顆南瓜都長得不一樣，會自動放進你的蒐集籃。</span></li>
+      </ol>
+    </section>
+
+    <div class="action-row">
+      <a class="button button-primary" href="./collection.html">🎃 查看南瓜籃</a>
+      <button class="button-secondary" type="button" onclick="location.reload()">↻ 更新進度</button>
+    </div>
+
+    <p class="footer-note">請使用一般 Safari，不要使用無痕瀏覽。每組全程使用同一台 iPad。</p>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/home.js"></script>
+  <script src="./js/offline.js"></script>
+</body>
+</html>

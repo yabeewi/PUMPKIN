@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120c1c">
+  <title>Pumpkin Found!</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="confetti" data-confetti></div>
+
+  <main class="page-shell narrow">
+    <header class="topbar">
+      <a class="brand small-link" href="./index.html">
+        <span class="brand-mark">🎃</span>
+        <span>Pumpkin Hunt</span>
+      </a>
+      <a class="small-link" href="./collection.html">南瓜籃 →</a>
+    </header>
+
+    <section data-valid-pumpkin>
+      <div class="card">
+        <div class="pumpkin-stage">
+          <canvas id="pumpkinCanvas" aria-label="可旋轉的 3D 南瓜"></canvas>
+        </div>
+
+        <div class="found-copy">
+          <p class="eyebrow">Treasure Unlocked</p>
+          <h1 data-pumpkin-title>PUMPKIN FOUND!</h1>
+          <p data-pumpkin-subtitle class="lead">南瓜已加入收藏。</p>
+
+          <div class="progress-inline">
+            <span>蒐集進度</span>
+            <div class="progress-track"><div class="progress-fill" data-progress-bar></div></div>
+            <strong data-progress-text>0 / 10</strong>
+          </div>
+
+          <div class="completion-banner" data-all-complete hidden>
+            🏆 全部南瓜蒐集完成！請把這個畫面帶回去給老師看。
+          </div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <a class="button button-primary" href="./collection.html">🎃 查看南瓜籃</a>
+        <a class="button button-secondary" href="./index.html">回到首頁</a>
+      </div>
+      <p class="footer-note">可以用手指左右拖曳 3D 南瓜。每一顆南瓜的顏色、配飾與個性都不一樣。</p>
+    </section>
+
+    <section class="card invalid-card" data-invalid-pumpkin hidden>
+      <div class="invalid-icon">👻</div>
+      <h2>這不是有效的南瓜 QR Code</h2>
+      <p class="lead">請重新找到活動現場的 QR Code，再用 iPad 相機掃描。</p>
+      <div class="action-row">
+        <a class="button button-primary" href="./index.html">回到首頁</a>
+        <a class="button button-secondary" href="./collection.html">查看南瓜籃</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/pumpkin.js"></script>
+  <script src="./js/pumpkin3d.js"></script>
+  <script src="./js/offline.js"></script>
+</body>
+</html>

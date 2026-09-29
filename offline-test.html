@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120c1c">
+  <title>離線／南瓜網址測試｜Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="page-shell narrow">
+    <header class="topbar">
+      <a class="brand small-link" href="./index.html"><span class="brand-mark">🧪</span><span>測試工具</span></a>
+      <a class="small-link" href="./index.html">← 回首頁</a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Teacher Diagnostic</p>
+      <h1>離線與 10 顆南瓜測試</h1>
+      <p class="lead">先保持網路連線，等離線資料顯示完成，再逐一測試。正式活動前可關閉 Wi‑Fi，再重新掃其中 1～2 顆確認。</p>
+    </section>
+
+    <section class="card offline-card">
+      <div class="offline-status" data-offline-status>檢查離線資料中…</div>
+      <p class="helper" data-offline-detail>第一次開啟請保持網路連線。</p>
+      <button class="button-secondary" type="button" data-offline-check>重新檢查</button>
+    </section>
+
+    <section class="collection-grid" id="testLinks"></section>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/offline.js"></script>
+  <script>
+    const root = document.getElementById('testLinks');
+    window.PUMPKIN_HUNT_CONFIG.pumpkins.forEach(p => {
+      const url = `./pumpkin.html?code=${encodeURIComponent(p.code)}&p=${encodeURIComponent(p.code)}`;
+      const card = document.createElement('article');
+      card.className = 'collection-card is-found';
+      card.style.background = `linear-gradient(160deg, ${p.palette.shell}, ${p.palette.shell2})`;
+      card.innerHTML = `
+        <div class="collection-card-header">
+          <div><p class="eyebrow" style="color:rgba(255,255,255,.84)">#${p.id}</p><h3>${p.name}</h3></div>
+          <span class="tag">${p.emoji}</span>
+        </div>
+        <p class="meta-line">code：<strong>${p.code}</strong></p>
+        <div class="action-row"><a class="button button-secondary" href="${url}">測試這顆南瓜</a></div>
+      `;
+      root.appendChild(card);
+    });
+  </script>
+</body>
+</html>

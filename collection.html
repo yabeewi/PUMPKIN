@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120c1c">
+  <title>我的南瓜籃｜Halloween Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="page-shell narrow">
+    <header class="topbar">
+      <a class="brand small-link" href="./index.html">
+        <span class="brand-mark">🎃</span>
+        <span>Pumpkin Hunt</span>
+      </a>
+      <a class="small-link" href="./index.html">← 回首頁</a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">My Collection</p>
+      <h1>我的南瓜籃</h1>
+      <p class="lead"><span data-team-label>你的隊伍</span>目前的蒐集進度。每顆南瓜的顏色、配飾和個性都不同。</p>
+    </section>
+
+    <section class="card collection-summary">
+      <div class="progress-head">
+        <div>
+          <p class="eyebrow">Collected</p>
+          <div class="progress-big"><span data-progress-count>0</span> <small>/ <span data-progress-total>10</span></small></div>
+        </div>
+        <span>🧺</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" data-progress-bar></div>
+      </div>
+    </section>
+
+    <section class="collection-grid" data-collection-grid></section>
+
+    <section class="card complete-card" data-completion hidden>
+      <div class="trophy">🏆</div>
+      <p class="eyebrow">Congratulations</p>
+      <h2>10 / 10 全部完成！</h2>
+      <p class="lead">你們已經找到所有萬聖節南瓜。把這個畫面拿給老師確認吧！</p>
+    </section>
+
+    <div class="action-row">
+      <a class="button button-primary" href="./index.html">繼續尋寶</a>
+      <button class="button-danger" id="resetGame" type="button">清除本機紀錄</button>
+    </div>
+
+    <div class="reset-zone">
+      <p class="footer-note">「清除本機紀錄」只在活動重新開始或更換隊伍時使用。</p>
+    </div>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/collection.js"></script>
+  <script src="./js/offline.js"></script>
+</body>
+</html>

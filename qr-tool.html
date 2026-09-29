@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>教師 QR Code 工具｜Halloween Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="tool-layout">
+    <div class="no-print">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">🧑‍🏫</span>
+          <span>教師 QR Code 工具</span>
+        </div>
+        <a class="small-link" href="./index.html">學生首頁 →</a>
+      </header>
+
+      <section class="card tool-card">
+        <p class="eyebrow">Teacher Only</p>
+        <h1 style="font-size: clamp(32px, 6vw, 48px)">產生 10 張南瓜 QR Code</h1>
+        <p class="lead" style="margin: 0 0 16px">網站部署完成後，把公開網址填入下方。每張 QR Code 都會對應到一顆不同顏色、不同配飾、不同個性的南瓜。</p>
+
+        <div class="tool-controls">
+          <input id="baseUrl" type="url" placeholder="https://你的網站網址/HalloweenPumpkinHunt">
+          <button id="generateQr" class="button-primary" type="button">產生 QR</button>
+          <button id="printQr" class="button-secondary" type="button">列印</button>
+        </div>
+        <p class="tool-status" data-qr-status>請先確認公開網址，再產生 QR Code。</p>
+      </section>
+    </div>
+
+    <section class="qr-output" data-qr-output></section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/qr-tool.js"></script>
+</body>
+</html>
