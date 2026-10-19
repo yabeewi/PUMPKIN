@@ -15,16 +15,16 @@
 
   function accessoryLabel(key) {
     const map = {
-      cape: '披風',
-      leaf: '葉片帽',
-      star: '星星別針',
-      crown: '皇冠',
-      glasses: '眼鏡',
-      batwings: '蝙蝠翅膀',
-      bow: '蝴蝶結',
-      sleepcap: '睡帽',
-      witchhat: '魔法帽',
-      halo: '天使光環'
+      cape: 'Cape',
+      leaf: 'Leaf Hat',
+      star: 'Star Pin',
+      crown: 'Crown',
+      glasses: 'Glasses',
+      batwings: 'Bat Wings',
+      bow: 'Bow',
+      sleepcap: 'Sleep Cap',
+      witchhat: 'Witch Hat',
+      halo: 'Halo'
     };
     return map[key] || key;
   }
@@ -35,7 +35,7 @@
     card.innerHTML = `
       <p class="eyebrow" style="color:#ff8a00">Pumpkin #${pumpkin.id}</p>
       <h3>${pumpkin.name}</h3>
-      <div class="qr-meta">顏色／角色各不相同<br>配飾：${accessoryLabel(pumpkin.accessory)}<br>個性：${pumpkin.personality}</div>
+      <div class="qr-meta">Each character is unique<br>Accessory: ${accessoryLabel(pumpkin.accessory)}<br>Personality: ${pumpkin.personality}</div>
       <div class="qr-box"></div>
       <div class="qr-link">${url}</div>
     `;
@@ -54,7 +54,7 @@
   function generate() {
     const base = normalizeBaseUrl(baseUrlInput.value);
     if (!base) {
-      status.textContent = '請先輸入正式網站網址，例如 https://example.com/HalloweenPumpkinHunt';
+      status.textContent = 'Enter the deployed website URL, for example https://example.com/PUMPKIN';
       output.innerHTML = '';
       return;
     }
@@ -64,7 +64,7 @@
       const url = `${base}/pumpkin.html?code=${encodeURIComponent(pumpkin.code)}&p=${encodeURIComponent(pumpkin.code)}`;
       output.appendChild(createQrCard(pumpkin, url));
     });
-    status.textContent = `已產生 ${config.totalPumpkins} 張 QR Code，可直接列印。`;
+    status.textContent = `Generated ${config.totalPumpkins} QR Codes. They are ready to print.`;
   }
 
   if (generateBtn) generateBtn.addEventListener('click', generate);

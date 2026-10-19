@@ -1,7 +1,13 @@
 (function () {
+  'use strict';
+
+  const APP_VERSION = 'v5.0-en-30';
   const statusEls = Array.from(document.querySelectorAll('[data-offline-status]'));
   const detailEls = Array.from(document.querySelectorAll('[data-offline-detail]'));
   const checkButtons = Array.from(document.querySelectorAll('[data-offline-check]'));
+  const forceButtons = Array.from(document.querySelectorAll('[data-offline-force-update]'));
+
+  window.PUMPKIN_HUNT_APP_VERSION = APP_VERSION;
 
   function setStatus(text, state, detail) {
     statusEls.forEach(el => {
@@ -19,7 +25,7 @@
     if (!registration || !registration.active) return null;
     return new Promise((resolve) => {
       const channel = new MessageChannel();
-      const timer = setTimeout(() => resolve(null), 3000);
+      const timer = setTimeout(() => resolve(null), 3500);
       channel.port1.onmessage = (event) => {
         clearTimeout(timer);
         resolve(event.data || null);
@@ -28,36 +34,64 @@
     });
   }
 
+  async function forceFreshInstall() {
+    try {
+      setStatus('Clearing old offline data…', 'loading', 'Stay online. The page will refresh automatically when the update is ready.');
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(reg => reg.unregister()));
+      }
+      if ('caches' in window) {
+        const names = await caches.keys();
+        await Promise.all(names.filter(name => name.startsWith('pumpkin-hunt-')).map(name => caches.delete(name)));
+      }
+      location.replace(location.pathname + '?fresh=' + Date.now());
+    } catch (error) {
+      console.error(error);
+      setStatus('⚠️ Update failed', 'error', 'Close this tab and reopen the website.');
+    }
+  }
+
   async function setup() {
     if (!('serviceWorker' in navigator)) {
-      setStatus('⚠️ 此瀏覽器不支援離線快取', 'error', '請改用最新版 Safari。');
+      setStatus('⚠️ This browser does not support offline caching', 'error', `Version ${APP_VERSION}. Please use the latest Safari.`);
       return;
     }
 
     if (!isSecureEnough()) {
-      setStatus('⚠️ 正式離線模式需要 HTTPS', 'warn', '電腦可用 localhost 測試；iPad 正式使用請部署到 HTTPS 網址。');
+      setStatus('⚠️ Offline mode requires HTTPS', 'warn', `Version ${APP_VERSION}. Use localhost for computer testing; deploy with HTTPS for iPad use.`);
       return;
     }
 
     try {
-      setStatus('準備離線資料中…', 'loading', '第一次開啟時請保持網路連線。');
-      const registration = await navigator.serviceWorker.register('./service-worker.js', { scope: './' });
+      setStatus('Preparing offline data…', 'loading', `Version ${APP_VERSION}. Stay online the first time you open the site.`);
+      const registration = await navigator.serviceWorker.register('./service-worker.js', { scope: './', updateViaCache: 'none' });
+      try { await registration.update(); } catch (_) {}
       await navigator.serviceWorker.ready;
-      const result = await checkCache(registration);
+      const activeRegistration = await navigator.serviceWorker.getRegistration('./');
+      const result = await checkCache(activeRegistration || registration);
       if (result && result.complete) {
-        setStatus('✅ 離線模式準備完成', 'ready', `已快取 ${result.cached}/${result.total} 個必要檔案。現在可以關閉 Wi‑Fi 測試。`);
+        setStatus('✅ Offline mode is ready', 'ready', `Version ${APP_VERSION} | Cached ${result.cached}/${result.total} required files.`);
       } else {
-        setStatus('✅ 離線服務已啟用', 'ready', '建議重新整理一次，再關閉 Wi‑Fi 測試其中一顆南瓜。');
+        setStatus('✅ Offline service is active', 'ready', `Version ${APP_VERSION} | Refresh once, then turn off Wi-Fi to test.`);
       }
     } catch (error) {
       console.error(error);
-      setStatus('⚠️ 離線資料準備失敗', 'error', '請確認目前有網路、網站使用 HTTPS，然後重新整理。');
+      setStatus('⚠️ Offline setup failed', 'error', `Version ${APP_VERSION} | Check your internet connection and make sure the site uses HTTPS.`);
     }
   }
 
-  checkButtons.forEach(button => {
-    button.addEventListener('click', () => setup());
-  });
+  checkButtons.forEach(button => button.addEventListener('click', setup));
+  forceButtons.forEach(button => button.addEventListener('click', forceFreshInstall));
+
+  // Remove the one-shot query added by the current service worker without reloading again.
+  try {
+    const url = new URL(location.href);
+    if (url.searchParams.has('__swv5')) {
+      url.searchParams.delete('__swv5');
+      history.replaceState(null, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash);
+    }
+  } catch (_) {}
 
   setup();
 })();

@@ -19,7 +19,7 @@
     if (countEl) countEl.textContent = String(collected.length);
     if (totalEl) totalEl.textContent = String(total);
     if (barEl) barEl.style.width = `${(collected.length / total) * 100}%`;
-    if (teamLabel) teamLabel.textContent = teamName || '你的隊伍';
+    if (teamLabel) teamLabel.textContent = teamName || 'Your Team';
     if (completionEl) completionEl.hidden = collected.length !== total;
 
     if (!gridEl) return;
@@ -39,22 +39,22 @@
               <p class="eyebrow" style="color: rgba(255,255,255,0.84)">Pumpkin #${pumpkin.id}</p>
               <h3>${pumpkin.name}</h3>
             </div>
-            <span class="tag">${pumpkin.emoji} 已找到</span>
+            <span class="tag">${pumpkin.emoji} Found</span>
           </div>
           <div class="collection-emoji">${pumpkin.emoji}</div>
-          <div class="meta-line"><strong>配飾：</strong>${accessoryLabel(pumpkin.accessory)}<br><strong>特色：</strong>${pumpkin.subtitle}</div>
-          <div class="personality-line">個性：${pumpkin.personality}</div>
+          <div class="meta-line"><strong>Accessory:</strong> ${accessoryLabel(pumpkin.accessory)}<br><strong>About:</strong> ${pumpkin.subtitle}</div>
+          <div class="personality-line">Personality: ${pumpkin.personality}</div>
         `
         : `
           <div class="collection-card-header">
             <div>
               <p class="eyebrow">Pumpkin #${pumpkin.id}</p>
-              <h3>？？？</h3>
+              <h3>???</h3>
             </div>
-            <span class="tag">🔒 未找到</span>
+            <span class="tag">🔒 Not Found</span>
           </div>
           <div class="collection-emoji">❓</div>
-          <div class="meta-line locked-label">找到 QR Code 後，這顆南瓜的顏色、配飾與個性才會揭曉。</div>
+          <div class="meta-line locked-label">Find and scan this pumpkin's QR Code to reveal its color, accessory, and personality.</div>
         `;
       gridEl.appendChild(card);
     });
@@ -62,23 +62,23 @@
 
   function accessoryLabel(key) {
     const map = {
-      cape: '披風',
-      leaf: '葉片帽',
-      star: '星星別針',
-      crown: '皇冠',
-      glasses: '眼鏡',
-      batwings: '蝙蝠翅膀',
-      bow: '蝴蝶結',
-      sleepcap: '睡帽',
-      witchhat: '魔法帽',
-      halo: '天使光環'
+      cape: 'Cape',
+      leaf: 'Leaf Hat',
+      star: 'Star Pin',
+      crown: 'Crown',
+      glasses: 'Glasses',
+      batwings: 'Bat Wings',
+      bow: 'Bow',
+      sleepcap: 'Sleep Cap',
+      witchhat: 'Witch Hat',
+      halo: 'Halo'
     };
     return map[key] || key;
   }
 
   if (resetBtn) {
     resetBtn.addEventListener('click', function () {
-      if (window.confirm('確定要清除這台 iPad 的隊伍名稱與所有南瓜蒐集紀錄嗎？')) {
+      if (window.confirm('Clear the team name and all pumpkin collection progress stored on this iPad?')) {
         storage.clearAll();
         render();
       }

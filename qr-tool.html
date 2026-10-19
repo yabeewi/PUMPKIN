@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>教師 QR Code 工具｜Halloween Pumpkin Hunt</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <title>Teacher QR Code Tool | Halloween Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css?v=5.0">
 </head>
 <body>
   <main class="tool-layout">
@@ -12,22 +12,22 @@
       <header class="topbar">
         <div class="brand">
           <span class="brand-mark">🧑‍🏫</span>
-          <span>教師 QR Code 工具</span>
+          <span>Teacher QR Code Tool</span>
         </div>
-        <a class="small-link" href="./index.html">學生首頁 →</a>
+        <a class="small-link" href="./index.html">Student Home →</a>
       </header>
 
       <section class="card tool-card">
         <p class="eyebrow">Teacher Only</p>
-        <h1 style="font-size: clamp(32px, 6vw, 48px)">產生 10 張南瓜 QR Code</h1>
-        <p class="lead" style="margin: 0 0 16px">網站部署完成後，把公開網址填入下方。每張 QR Code 都會對應到一顆不同顏色、不同配飾、不同個性的南瓜。</p>
+        <h1 style="font-size: clamp(32px, 6vw, 48px)">Generate 30 Pumpkin QR Codes</h1>
+        <p class="lead" style="margin: 0 0 16px">After the website is deployed, enter the public base URL below. Each QR Code will open a pumpkin with its own color, accessory, and personality.</p>
 
         <div class="tool-controls">
-          <input id="baseUrl" type="url" placeholder="https://你的網站網址/HalloweenPumpkinHunt">
-          <button id="generateQr" class="button-primary" type="button">產生 QR</button>
-          <button id="printQr" class="button-secondary" type="button">列印</button>
+          <input id="baseUrl" type="url" placeholder="https://your-site.example/PUMPKIN">
+          <button id="generateQr" class="button-primary" type="button">Generate QR Codes</button>
+          <button id="printQr" class="button-secondary" type="button">Print</button>
         </div>
-        <p class="tool-status" data-qr-status>請先確認公開網址，再產生 QR Code。</p>
+        <p class="tool-status" data-qr-status>Confirm the public website URL, then generate the QR Codes.</p>
       </section>
     </div>
 
@@ -35,7 +35,7 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="./js/config.js"></script>
-  <script src="./js/qr-tool.js"></script>
+  <script src="./js/config.js?v=5.0"></script>
+  <script src="./js/qr-tool.js?v=5.0"></script>
 </body>
 </html>

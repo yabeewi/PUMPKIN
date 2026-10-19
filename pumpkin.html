@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#120c1c">
   <title>Pumpkin Found!</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css?v=5.0">
 </head>
 <body>
   <div class="confetti" data-confetti></div>
@@ -16,54 +16,69 @@
         <span class="brand-mark">🎃</span>
         <span>Pumpkin Hunt</span>
       </a>
-      <a class="small-link" href="./collection.html">南瓜籃 →</a>
+      <a class="small-link" href="./collection.html">Pumpkin Basket →</a>
     </header>
 
     <section data-valid-pumpkin>
       <div class="card">
         <div class="pumpkin-stage">
-          <canvas id="pumpkinCanvas" aria-label="可旋轉的 3D 南瓜"></canvas>
+          <div id="pumpkinFallback" class="pumpkin-fallback" aria-label="Pumpkin fallback display">
+            <div class="fallback-accessory" data-fallback-accessory></div>
+            <div class="fallback-body">
+              <span class="fallback-lobe lobe-1"></span>
+              <span class="fallback-lobe lobe-2"></span>
+              <span class="fallback-lobe lobe-3"></span>
+              <span class="fallback-lobe lobe-4"></span>
+              <span class="fallback-lobe lobe-5"></span>
+              <span class="fallback-stem"></span>
+              <span class="fallback-eye left"></span>
+              <span class="fallback-eye right"></span>
+              <span class="fallback-mouth"></span>
+            </div>
+            <div class="fallback-note">Safe Display Mode</div>
+          </div>
+          <canvas id="pumpkinCanvas" aria-label="Rotatable 3D pumpkin"></canvas>
         </div>
 
         <div class="found-copy">
           <p class="eyebrow">Treasure Unlocked</p>
           <h1 data-pumpkin-title>PUMPKIN FOUND!</h1>
-          <p data-pumpkin-subtitle class="lead">南瓜已加入收藏。</p>
+          <p data-pumpkin-subtitle class="lead">Pumpkin added to your collection.</p>
 
           <div class="progress-inline">
-            <span>蒐集進度</span>
+            <span>Collection Progress</span>
             <div class="progress-track"><div class="progress-fill" data-progress-bar></div></div>
-            <strong data-progress-text>0 / 10</strong>
+            <strong data-progress-text>0 / 30</strong>
           </div>
 
           <div class="completion-banner" data-all-complete hidden>
-            🏆 全部南瓜蒐集完成！請把這個畫面帶回去給老師看。
+            🏆 You collected all 30 pumpkins! Show this screen to the teacher.
           </div>
         </div>
       </div>
 
       <div class="action-row">
-        <a class="button button-primary" href="./collection.html">🎃 查看南瓜籃</a>
-        <a class="button button-secondary" href="./index.html">回到首頁</a>
+        <a class="button button-primary" href="./collection.html">🎃 View Pumpkin Basket</a>
+        <a class="button button-secondary" href="./index.html">Back to Home</a>
       </div>
-      <p class="footer-note">可以用手指左右拖曳 3D 南瓜。每一顆南瓜的顏色、配飾與個性都不一樣。</p>
+      <p class="footer-note">Drag left or right to rotate the 3D pumpkin. Every pumpkin has a different color, accessory, and personality.</p>
     </section>
 
     <section class="card invalid-card" data-invalid-pumpkin hidden>
       <div class="invalid-icon">👻</div>
-      <h2>這不是有效的南瓜 QR Code</h2>
-      <p class="lead">請重新找到活動現場的 QR Code，再用 iPad 相機掃描。</p>
+      <h2>This is not a valid pumpkin QR Code</h2>
+      <p class="lead">Find one of the QR Codes hidden in the activity area and scan it again with the iPad camera.</p>
       <div class="action-row">
-        <a class="button button-primary" href="./index.html">回到首頁</a>
-        <a class="button button-secondary" href="./collection.html">查看南瓜籃</a>
+        <a class="button button-primary" href="./index.html">Back to Home</a>
+        <a class="button button-secondary" href="./collection.html">View Pumpkin Basket</a>
       </div>
     </section>
   </main>
 
-  <script src="./js/config.js"></script>
-  <script src="./js/storage.js"></script>
-  <script src="./js/pumpkin.js"></script>
-  <script src="./js/pumpkin3d.js"></script>
-  <script src="./js/offline.js"></script>
+  <script src="./js/config.js?v=5.0"></script>
+  <script src="./js/storage.js?v=5.0"></script>
+  <script src="./js/pumpkin.js?v=5.0"></script>
+  <script src="./js/pumpkin3d.js?v=5.0"></script>
+  <script src="./js/offline.js?v=5.0"></script>
 </body>
 </html>

@@ -59,11 +59,35 @@
   const collected = result.collected;
   window.__CURRENT_PUMPKIN = pumpkin;
 
-  if (titleEl) titleEl.textContent = wasAlreadyCollected ? `你又遇到 ${pumpkin.name} 了！` : `${pumpkin.name} 加入收藏！`;
+  const fallbackEl = document.getElementById('pumpkinFallback');
+  if (fallbackEl) {
+    const accessoryEl = fallbackEl.querySelector('[data-fallback-accessory]');
+    const accessoryMap = {
+      cape: '🦸',
+      leaf: '🍃',
+      star: '⭐',
+      crown: '👑',
+      glasses: '👓',
+      batwings: '🦇',
+      bow: '🎀',
+      sleepcap: '💤',
+      witchhat: '🧙',
+      halo: '😇'
+    };
+    fallbackEl.style.setProperty('--pumpkin-shell', pumpkin.palette.shell);
+    fallbackEl.style.setProperty('--pumpkin-shell-2', pumpkin.palette.shell2);
+    fallbackEl.style.setProperty('--pumpkin-stem', pumpkin.palette.stem);
+    fallbackEl.style.setProperty('--pumpkin-accent', pumpkin.palette.accent);
+    fallbackEl.style.setProperty('--pumpkin-eye', pumpkin.palette.eye);
+    fallbackEl.dataset.pumpkinId = String(pumpkin.id);
+    if (accessoryEl) accessoryEl.textContent = accessoryMap[pumpkin.accessory] || pumpkin.emoji;
+  }
+
+  if (titleEl) titleEl.textContent = wasAlreadyCollected ? `You found ${pumpkin.name} again!` : `${pumpkin.name} joined your collection!`;
   if (subtitleEl) {
     subtitleEl.textContent = wasAlreadyCollected
-      ? `${pumpkin.name} 已經在你的南瓜籃裡。個性：${pumpkin.personality}`
-      : `${pumpkin.subtitle} 個性：${pumpkin.personality}`;
+      ? `${pumpkin.name} is already in your pumpkin basket. Personality: ${pumpkin.personality}`
+      : `${pumpkin.subtitle} Personality: ${pumpkin.personality}`;
   }
 
   if (progressBar) progressBar.style.width = `${(collected.length / config.totalPumpkins) * 100}%`;

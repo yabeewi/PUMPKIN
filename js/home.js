@@ -14,7 +14,7 @@
   function renderTeam() {
     const teamName = storage.getTeamName();
     if (teamInput) teamInput.value = teamName;
-    if (teamLabel) teamLabel.textContent = teamName ? `目前隊伍：${teamName}` : '尚未設定隊伍名稱';
+    if (teamLabel) teamLabel.textContent = teamName ? `Current team: ${teamName}` : 'No team name set yet';
   }
 
   function renderProgress() {
