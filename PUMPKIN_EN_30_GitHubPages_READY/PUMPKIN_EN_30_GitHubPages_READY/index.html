@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120c1c">
+  <title>Halloween Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css?v=5.0">
+</head>
+<body>
+  <main class="page-shell narrow">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">🎃</span>
+        <span>Pumpkin Hunt</span>
+      </div>
+      <a class="small-link" href="./collection.html">My Pumpkin Basket →</a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Halloween Treasure Hunt</p>
+      <h1>Halloween Pumpkin Hunt</h1>
+      <p class="lead">Search for hidden QR Codes and collect all 30 mysterious pumpkins. Every pumpkin has its own color, accessory, and personality.</p>
+    </section>
+
+    <section class="card progress-card">
+      <div class="progress-head">
+        <div>
+          <p class="eyebrow">Collection Progress</p>
+          <div class="progress-big"><span data-progress-count>0</span> <small>/ <span data-progress-total>30</span></small></div>
+        </div>
+        <span>🎃</span>
+      </div>
+      <div class="progress-track" aria-label="Collection progress">
+        <div class="progress-fill" data-progress-bar></div>
+      </div>
+      <div class="mini-grid" data-mini-grid></div>
+    </section>
+
+    <section class="card offline-card">
+      <p class="eyebrow">Offline Ready</p>
+      <h2 class="section-title" data-offline-status>Preparing offline data…</h2>
+      <p class="helper" data-offline-detail>Keep this device online the first time until you see “Offline mode is ready.”</p>
+      <div class="action-row">
+        <button class="button-secondary" type="button" data-offline-check>Check Offline Data Again</button><button class="button-danger" type="button" data-offline-force-update>Update to Latest Version</button>
+      </div>
+    </section>
+
+    <section class="card team-card">
+      <h2 class="section-title">Team Name</h2>
+      <div class="input-row">
+        <input id="teamName" type="text" maxlength="24" placeholder="Example: Ghost Team" autocomplete="off">
+        <button id="saveTeam" class="button-primary" type="button">Save</button>
+      </div>
+      <div class="team-label" data-team-label>No team name set yet</div>
+      <p class="helper">Your team name and collection progress are stored only in Safari on this iPad.</p>
+    </section>
+
+    <section class="card instructions-card">
+      <h2 class="section-title">How to Play</h2>
+      <ol class="instructions">
+        <li><span class="step-number">1</span><span>Start the hunt with your team and keep the same iPad with you.</span></li>
+        <li><span class="step-number">2</span><span>Search the activity area for hidden pumpkin QR Codes.</span></li>
+        <li><span class="step-number">3</span><span>Scan each QR Code with the iPad camera.</span></li>
+        <li><span class="step-number">4</span><span>Each unique pumpkin is automatically added to your basket.</span></li>
+      </ol>
+    </section>
+
+    <div class="action-row">
+      <a class="button button-primary" href="./collection.html">🎃 View Pumpkin Basket</a>
+      <button class="button-secondary" type="button" onclick="location.reload()">↻ Refresh Progress</button>
+    </div>
+
+    <p class="footer-note">Use regular Safari, not Private Browsing. Each team should use the same iPad for the entire activity.</p>
+  </main>
+
+  <script src="./js/config.js?v=5.0"></script>
+  <script src="./js/storage.js?v=5.0"></script>
+  <script src="./js/home.js?v=5.0"></script>
+  <script src="./js/offline.js?v=5.0"></script>
+</body>
+</html>

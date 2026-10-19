@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120c1c">
+  <title>Offline / Pumpkin URL Test | Pumpkin Hunt</title>
+  <link rel="stylesheet" href="./css/style.css?v=5.0">
+</head>
+<body>
+  <main class="page-shell narrow">
+    <header class="topbar">
+      <a class="brand small-link" href="./index.html"><span class="brand-mark">🧪</span><span>Test Tool</span></a>
+      <a class="small-link" href="./index.html">← Back to Home</a>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Teacher Diagnostic</p>
+      <h1>Offline and 30-Pumpkin Test</h1>
+      <p class="lead">Stay online until the offline data is ready, then test the pumpkins one by one. Before the activity, turn off Wi-Fi and scan 1–2 pumpkins again to confirm offline access.</p>
+    </section>
+
+    <section class="card offline-card">
+      <div class="offline-status" data-offline-status>Checking offline data…</div>
+      <p class="helper" data-offline-detail>Keep the device online the first time you open this page.</p>
+      <div class="action-row"><button class="button-secondary" type="button" data-offline-check>Check Again</button><button class="button-danger" type="button" data-offline-force-update>Clear Old Cache and Update</button></div><p class="footer-note">Current version: v5.0-en-30. If a pumpkin page still shows only PUMPKIN FOUND! instead of the character name, press “Clear Old Cache and Update.”</p>
+    </section>
+
+    <section class="collection-grid" id="testLinks"></section>
+  </main>
+
+  <script src="./js/config.js?v=5.0"></script>
+  <script src="./js/offline.js?v=5.0"></script>
+  <script>
+    const root = document.getElementById('testLinks');
+    window.PUMPKIN_HUNT_CONFIG.pumpkins.forEach(p => {
+      const url = `./pumpkin.html?code=${encodeURIComponent(p.code)}&p=${encodeURIComponent(p.code)}`;
+      const card = document.createElement('article');
+      card.className = 'collection-card is-found';
+      card.style.background = `linear-gradient(160deg, ${p.palette.shell}, ${p.palette.shell2})`;
+      card.innerHTML = `
+        <div class="collection-card-header">
+          <div><p class="eyebrow" style="color:rgba(255,255,255,.84)">#${p.id}</p><h3>${p.name}</h3></div>
+          <span class="tag">${p.emoji}</span>
+        </div>
+        <p class="meta-line">Code: <strong>${p.code}</strong></p>
+        <div class="action-row"><a class="button button-secondary" href="${url}">Test This Pumpkin</a></div>
+      `;
+      root.appendChild(card);
+    });
+  </script>
+</body>
+</html>
